@@ -1,3 +1,5 @@
+import pandas
+
 def test():
     print('h2i')
 
