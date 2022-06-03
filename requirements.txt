@@ -4,9 +4,23 @@
 #
 #    pip-compile requirements.in
 #
+astroid==2.11.5
+    # via pylint
+dill==0.3.5.1
+    # via pylint
+isort==5.10.1
+    # via pylint
+lazy-object-proxy==1.7.1
+    # via astroid
+mccabe==0.7.0
+    # via pylint
 numpy==1.22.4
     # via pandas
 pandas==1.4.2
+    # via -r requirements.in
+platformdirs==2.5.2
+    # via pylint
+pylint==2.14.0
     # via -r requirements.in
 python-dateutil==2.8.2
     # via pandas
@@ -14,3 +28,12 @@ pytz==2022.1
     # via pandas
 six==1.16.0
     # via python-dateutil
+tomli==2.0.1
+    # via pylint
+tomlkit==0.11.0
+    # via pylint
+wrapt==1.14.1
+    # via astroid
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
