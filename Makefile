@@ -3,4 +3,7 @@ pip/install:
 	pip install -r requirements.txt
 
 py/lint:
-	pylint ./kn
+	pylint ./src
+
+py/test:
+	python -m pytest
