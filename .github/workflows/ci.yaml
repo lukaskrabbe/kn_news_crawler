@@ -1,4 +1,4 @@
-name: ci
+name: CICD
 
 on:
   push:
@@ -41,5 +41,5 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            sudo docker login registry-1.docker.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+            docker login registry-1.docker.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/kn:latest
