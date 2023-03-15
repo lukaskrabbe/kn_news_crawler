@@ -2,6 +2,7 @@
     Module used to play Around
 """
 
+
 def double_string(text: str) -> str:
     """
     Function to double a given input String
@@ -16,5 +17,5 @@ def double_string(text: str) -> str:
     return value
 
 
-if __name__ == '__main__':
-    print(double_string(text='Test'))
+if __name__ == "__main__":
+    print(double_string(text="Test"))

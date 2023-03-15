@@ -7,13 +7,8 @@ def verify_answer(expected, answer):
 
 
 @pytest.mark.parametrize(
-    "input, output",
-    [
-        ('Test', 'TestTest'),
-        ('abc', 'abcabc'),
-        ('abcd', 'abcdabcd')
-    ]
+    "input, output", [("Test", "TestTest"), ("abc", "abcabc"), ("abcd", "abcdabcd")]
 )
 def test_double(input, output):
     answer = double_string(input)
-    verify_answer(output, answer)
+    assert output == answer
