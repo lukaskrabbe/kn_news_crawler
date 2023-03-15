@@ -18,4 +18,4 @@ def double_string(text: str) -> str:
 
 
 if __name__ == "__main__":
-    print(double_string(text="Test"))
+    print(double_string(double_string(text="Test")))
