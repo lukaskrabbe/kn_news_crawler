@@ -3,6 +3,7 @@
 """
 import os
 import logging
+import time
 from log_utils.helper import LogHelper
 from typing import Optional
 
@@ -10,6 +11,7 @@ log_dir = "../data/logs/"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
+logging.Formatter.converter = time.localtime
 logging.basicConfig(
     filename=log_dir + "string_function.log",
     filemode="w",
