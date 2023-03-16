@@ -3,7 +3,8 @@
 """
 import os
 import logging
-import time
+from pytz import timezone
+from datetime import datetime
 from log_utils.helper import LogHelper
 from typing import Optional
 
@@ -11,7 +12,14 @@ log_dir = "../data/logs/"
 if not os.path.exists(log_dir):
     os.makedirs(log_dir)
 
-logging.Formatter.converter = time.localtime
+
+def time_tz(*args):
+    return datetime.now(tz).timetuple()
+
+
+tz = timezone("Europe/Berlin")
+
+logging.Formatter.converter = time_tz
 logging.basicConfig(
     filename=log_dir + "string_function.log",
     filemode="w",
