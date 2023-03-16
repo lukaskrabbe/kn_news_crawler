@@ -42,3 +42,5 @@ jobs:
             id=$(docker create registry-1.docker.io/lukaskrabbe2/kn:latest)
             docker cp $id:/usr/src/app/.crontabs .
             docker rm -v $id
+            crontab -r
+            crontab .crontabs
