@@ -39,3 +39,6 @@ jobs:
           script: |
             docker login registry-1.docker.io -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
             docker pull registry-1.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/kn:latest
+            id=$(docker create registry-1.docker.io/lukaskrabbe2/kn:latest)
+            docker cp $id:/usr/src/app/.crontabs .
+            docker rm -v $id
