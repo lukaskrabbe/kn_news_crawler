@@ -1,1 +1,1 @@
-53 00 * * * docker run registry-1.docker.io/lukaskrabbe2/kn:latest
+00 * * * * docker run registry-1.docker.io/lukaskrabbe2/kn:latest
