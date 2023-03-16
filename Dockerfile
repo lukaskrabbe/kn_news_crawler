@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["cron_scheduler.sh" ]
+CMD ["./cron_scheduler.sh" ]
