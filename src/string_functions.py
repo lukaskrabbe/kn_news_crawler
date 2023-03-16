@@ -1,13 +1,17 @@
 """
     Module used to play Around
 """
+import os
 import logging
 from log_utils.helper import LogHelper
-import os
 from typing import Optional
 
+log_dir = "../data/logs/"
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
 logging.basicConfig(
-    filename="../data/logs/string_function.log",
+    filename=log_dir + "string_function.log",
     filemode="w",
     format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
     datefmt="%H:%M:%S",
