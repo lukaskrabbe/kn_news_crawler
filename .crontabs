@@ -1,1 +1,1 @@
-* * * * * docker run --mount type=bind,source=/home/lukaskrabbe/data/,target=/usr/src/data/ registry-1.docker.io/lukaskrabbe2/kn:latest
+*/10 * * * * docker run --mount type=bind,source=/home/lukaskrabbe/data/,target=/usr/src/data/ registry-1.docker.io/lukaskrabbe2/kn:latest
