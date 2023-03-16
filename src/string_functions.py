@@ -18,7 +18,10 @@ def double_string(text: str) -> str:
     value = text * 2
     return value
 
-def write_string_to_file(text: str, file_name: str, data_dir: Optional[str] = './../data/raw/') -> str:
+
+def write_string_to_file(
+    text: str, file_name: str, data_dir: Optional[str] = "./../data/raw/"
+) -> str:
     """
 
     Args:
