@@ -22,7 +22,7 @@ def double_string(text: str) -> str:
 def write_string_to_file(
     text: str, file_name: str, data_dir: Optional[str] = "./../data/raw/"
 ) -> str:
-    """
+    """ Function
 
     Args:
         text: String which will be written to File
