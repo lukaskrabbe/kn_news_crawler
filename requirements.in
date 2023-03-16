@@ -2,3 +2,4 @@ pandas
 pylint
 pytest
 pre-commit
+log-utils
