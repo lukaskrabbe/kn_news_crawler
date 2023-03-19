@@ -21,24 +21,24 @@ def login(session, secret):
 
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+        "AppleWebKit/537.36 (KHTML, like Gecko)"
         "Chrome/111.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,"
-        "image/webp,image/apng,*/*;q=0.8, "
+        "image/webp,image/apng,*/*;q=0.8,"
         "application/signed-exchange;v=b3;q=0.7",
-        "Cookie": "madsack-rnd-sso-hub=madsack-rnd-sso-hub6415906cd6c12; "
+        "Cookie": "madsack-rnd-sso-hub=madsack-rnd-sso-hub6415906cd6c12;"
         "madsack-rnd-sso-hub-present=true",
     }
     payload = (
         f"client_id=madsack-kn-epaper-web&code_challenge"
-        f"=_HiJPr_WQe8sKR0uTpPylHJAVp9tAJoAnpnQvNLfdW8 "
+        f"=_HiJPr_WQe8sKR0uTpPylHJAVp9tAJoAnpnQvNLfdW8"
         f"&code_challenge_method=S256&origin=%2Fv4%2Fhub%2Fsso%2Flogin"
         f"&password="
         f"{requests.utils.quote(secret['password'])}&redirect_uri=https%3A%2F"
-        f"%2Fepaper.kieler-nachrichten.de "
+        f"%2Fepaper.kieler-nachrichten.de"
         f"%2Fsso-redirect&response_type=code"
-        f"&username={requests.utils.quote(secret['user'])} "
+        f"&username={requests.utils.quote(secret['user'])}"
     )
 
     # RND-login
@@ -49,10 +49,10 @@ def login(session, secret):
 
     url = (
         "https://account.rnd.de/v4/hub/oauth?client_id=madsack-kn-epaper-web"
-        "&redirect_uri=https%3A%2F%2Fepaper "
+        "&redirect_uri=https%3A%2F%2Fepaper"
         ".kieler-nachrichten.de%2Fsso-redirect&response_type=code&code_challenge"
         "=_HiJPr_WQe8sKR0uTpPylHJAVp9tAJoAnpnQvNLfdW8&code_challenge_method=S256"
-        "&origin=%2Fv4%2Fhub%2Fsso%2Flogin "
+        "&origin=%2Fv4%2Fhub%2Fsso%2Flogin"
     )
     response = session.request("GET", url, headers=headers)
     logger.info("account.rnd.de/hub/oauth - status code: %s" % response.status_code)
@@ -74,7 +74,7 @@ def login(session, secret):
         "9b77baea75471943b4e6ce96ddb7c16f8fcc9fd851eeb785d74310f30386d6ebe909"
         "2745d6f93793513b9b48c904beccd301897bdbb0311d84da8c763c1a57ea4c08f92b"
         "47196d5078f89920b10b31119d67842801884a192caf09b1aad0f7ac8a74cb3d52c4"
-        "68b84306134c7e3c71cd939df0187d8ce8a0e59400cb5c0bc2ea53eacb28632cb0 "
+        "68b84306134c7e3c71cd939df0187d8ce8a0e59400cb5c0bc2ea53eacb28632cb0"
     )
     response = session.request("GET", url, headers=headers)
     logger.info(
