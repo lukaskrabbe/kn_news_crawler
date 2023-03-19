@@ -3,3 +3,4 @@ pylint
 pytest
 pre-commit
 log-utils
+requests
