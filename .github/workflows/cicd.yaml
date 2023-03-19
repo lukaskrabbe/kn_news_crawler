@@ -44,4 +44,6 @@ jobs:
             docker rm -v $id
             crontab -r
             crontab .crontabs
+            mkdir ./secrets/
+            touch ./secrets/KN_USER_SECRET.json
             echo ${{ secrets.KN_USER_SECRET }} > ./secrets/KN_USER_SECRET.json
