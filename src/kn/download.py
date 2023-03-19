@@ -1,8 +1,11 @@
-import requests
-import re
-import os
+# -*- coding: utf-8 -*-
 import json
 import logging
+import os
+import re
+
+import requests
+
 from .login import login
 
 logger = logging.getLogger("kn-download")

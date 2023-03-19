@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 
-from kn.download import download
 from helpers.log import get_logger
 from helpers.secrets import get_secret_from_env
+from kn.download import download
 
 logger = get_logger("kn-data-consumer")
 
