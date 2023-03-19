@@ -15,8 +15,9 @@ def get_secret_from_env(secret: str) -> Dict[str, str]:
     Returns:
         secret_value: None if Secret does not exists, dict if exists
     """
+
     try:
-        with open(f"./../secrets/{secret}.json", "r") as sv:
+        with open(f"./secrets/{secret}.json", "r") as sv:
             secret_value = json.loads(sv.read())
 
         logger.info("Successfully load secret %s", secret)

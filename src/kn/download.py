@@ -3,7 +3,7 @@ import re
 import os
 import json
 import logging
-from src.kn.login import login
+from .login import login
 
 logger = logging.getLogger("kn-download")
 
@@ -106,7 +106,7 @@ def download(load_date, secret):
         )
 
         data_dir = (
-            "./../data/raw/" + load_date.strftime("%d_%m_%Y") + "_" + current_id + "/"
+            "./data/raw/" + load_date.strftime("%d_%m_%Y") + "_" + current_id + "/"
         )
         if not os.path.exists(data_dir):
             logger.info("Create Data directory: %s" % data_dir)

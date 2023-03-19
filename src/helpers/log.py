@@ -14,7 +14,7 @@ def get_logger(function: str):
     Returns:
         logger: Logger
     """
-    log_dir = "../../data/logs/"
+    log_dir = "./data/logs/"
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
