@@ -44,4 +44,4 @@ jobs:
             docker rm -v $id
             crontab -r
             crontab .crontabs
-            export KN_USER_SECRET=${{ secrets.KN_USER_SECRET }}
+            echo ${{ secrets.KN_USER_SECRET }} > ./secrets/KN_USER_SECRET.json

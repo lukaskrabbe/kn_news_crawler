@@ -3,7 +3,8 @@ import json
 import logging
 from typing import Dict
 
-logger = logging.getLogger('secrets')
+logger = logging.getLogger("secrets")
+
 
 def get_secret_from_env(secret: str) -> Dict[str, str]:
     """
@@ -21,7 +22,7 @@ def get_secret_from_env(secret: str) -> Dict[str, str]:
         logger.error("Did not found secret %s in os env", secret)
         return None
 
-    if 'user' in secret_value and 'password' in secret_value:
+    if "user" in secret_value and "password" in secret_value:
         logger.info("Successfully load secret %s", secret)
         return secret_value
     else:
