@@ -26,9 +26,15 @@ if __name__ == "__main__":
     for folder in ["./data/prep/" + x for x in prep_data]:
         files = glob.glob(folder + "/*")
         logger.info("Start to upload %s files from %s", len(files), folder)
+
+        exists = 0
         for article_file in glob.glob(folder + "/*"):
             with open(article_file) as f:
                 file_data = json.load(f)
                 file_data["id"] = article_file.split("/")[-1].split(".")[0]
-                kn_collection.insert_one(file_data)
-        logger.info("Inserted %s Documents into DB", len(files))
+                if not len(list(kn_collection.find({"id": file_data["id"]}))) != 0:
+                    kn_collection.insert_one(file_data)
+                else:
+                    exists += 1
+
+        logger.info("Inserted %s Documents into DB", len(files) - exists)
