@@ -5,3 +5,9 @@ pre-commit
 log-utils
 requests
 pymongo
+jupyter
+matplotlib
+nltk
+HanTa
+kneed
+scikit-learn

@@ -2,14 +2,18 @@
 import json
 import logging
 from typing import Dict
+from typing import Optional
 
 logger = logging.getLogger("secrets")
 
 
-def get_secret_from_env(secret: str) -> Dict[str, str]:
+def get_secret_from_env(
+    secret: str, path: Optional[str] = "./secrets/"
+) -> Dict[str, str]:
     """
 
     Args:
+        path:
         secret:
 
     Returns:
@@ -17,14 +21,15 @@ def get_secret_from_env(secret: str) -> Dict[str, str]:
     """
 
     try:
-        with open(f"./secrets/{secret}.json", "r") as sv:
+        with open(f"{path}{secret}.json", "r") as sv:
             secret_value = json.loads(sv.read())
 
         logger.info("Successfully load secret %s", secret)
         return secret_value
     except FileNotFoundError:
         logger.error(
-            "Did not found secret %s in folder ./secrets/*",
+            "Did not found secret %s in folder %s",
             secret,
+            path,
         )
         return None

@@ -9,7 +9,7 @@ repos:
         -   id: check-yaml
         -   id: check-json
         -   id: check-added-large-files
-            args: [ '--maxkb=500' ]
+            args: [ '--maxkb=1200' ]
   -   repo: https://github.com/psf/black
       rev: 23.1.0
       hooks:
