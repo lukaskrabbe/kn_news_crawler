@@ -91,6 +91,7 @@ def prep_kn_content(raw_content_data: Dict[str, str]) -> Dict[str, str]:
                 value = split_mulitple_authors(value)
                 prep_content_data["author"] = {}
                 for key, val in value.items():
+                    val = val.lower().title()
                     prep_content_data["author"][key] = val
             if key == "page":
                 value = int(value)
