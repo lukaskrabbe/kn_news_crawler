@@ -302,7 +302,7 @@ python-dateutil==2.8.2
     #   pandas
 python-json-logger==2.0.7
     # via jupyter-events
-pytz==2022.1
+pytz==2023.3
     # via pandas
 pyyaml==6.0
     # via
