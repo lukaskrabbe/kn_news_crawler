@@ -11,3 +11,4 @@ nltk
 HanTa
 kneed
 scikit-learn
+hdbscan

@@ -49,6 +49,8 @@ contourpy==1.0.7
     # via matplotlib
 cycler==0.11.0
     # via matplotlib
+cython==0.29.34
+    # via hdbscan
 debugpy==1.6.6
     # via ipykernel
 decorator==5.1.1
@@ -72,6 +74,8 @@ fonttools==4.39.2
 fqdn==1.5.1
     # via jsonschema
 hanta==1.1.1
+    # via -r requirements.in
+hdbscan==0.8.29
     # via -r requirements.in
 identify==2.5.20
     # via pre-commit
@@ -115,6 +119,7 @@ jinja2==3.1.2
     #   notebook
 joblib==1.2.0
     # via
+    #   hdbscan
     #   nltk
     #   scikit-learn
 jsonpointer==2.3
@@ -215,6 +220,7 @@ notebook-shim==0.2.2
 numpy==1.22.4
     # via
     #   contourpy
+    #   hdbscan
     #   kneed
     #   matplotlib
     #   pandas
@@ -328,9 +334,12 @@ rfc3986-validator==0.1.1
     #   jsonschema
     #   jupyter-events
 scikit-learn==1.2.2
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   hdbscan
 scipy==1.10.1
     # via
+    #   hdbscan
     #   kneed
     #   scikit-learn
 send2trash==1.8.0
