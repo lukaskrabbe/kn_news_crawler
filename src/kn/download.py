@@ -12,6 +12,15 @@ logger = logging.getLogger("kn-download")
 
 
 def _get_e_paper_id(session, date):
+    """Get e-paper id for date
+
+    Args:
+        session: Session
+        date: Date in format YYYY-MM-DD
+
+    Returns:
+        current_id: e-paper id
+    """
     url = "https://epaper.kieler-nachrichten.de/kieler-nachrichten/" + date
     response = session.request("GET", url)
     logger.info(
@@ -29,6 +38,15 @@ def _get_e_paper_id(session, date):
 
 
 def _get_e_paper_meta_data(session, current_id):
+    """Get e-paper meta data
+
+    Args:
+        session: Session
+        current_id: e-paper id
+
+    Returns:
+        id: e-paper id
+    """
     url = "https://epaper.kieler-nachrichten.de/webreader-v3/config/" + current_id
     response = session.request("GET", url)
     logger.info(
@@ -64,6 +82,15 @@ def _get_e_paper_meta_data(session, current_id):
 
 
 def _get_e_paper_article_view(session, articleViewDataUrl):
+    """Get e-paper article view
+
+    Args:
+        session: Session
+        articleViewDataUrl: articleViewDataUrl
+
+    Returns:
+        article_data: article data
+    """
     url = (
         "https://epaper.kieler-nachrichten.de/webreader-v3/DataLoader.php?uri="
         + articleViewDataUrl
@@ -82,15 +109,15 @@ def _get_e_paper_article_view(session, articleViewDataUrl):
 
 
 def download(load_date, secret):
-    """
+    """Download e-paper
 
     Args:
-        load_date:
-        secret:
+        load_date: Date in format YYYY-MM-DD
+        secret: Secret
 
     Returns:
-        data_dir:
-        article_data:
+        data_dir: data directory
+        article_data: article data
     """
     with requests.session() as session:
         assert login(session, secret), "Can not proceed due to unsuccessful login!"

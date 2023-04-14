@@ -8,11 +8,11 @@ logger = logging.getLogger("kn-login")
 
 
 def login(session, secret):
-    """
+    """Login to e-paper website
 
     Args:
-        session:
-        secret:
+        session: Session
+        secret: Secret
 
     Returns:
         boolean: True if successful

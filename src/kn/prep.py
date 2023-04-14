@@ -7,6 +7,14 @@ CLEANR = re.compile("<.*?>")
 
 
 def cleanhtml(raw_html):
+    """Clean text from html tags
+
+    Args:
+        raw_html: Text with html tags
+
+    Returns:
+        cleantext: Text without html tags
+    """
     cleantext = re.sub(CLEANR, "", raw_html)
     cleantext = cleantext.replace("&nbsp", " ")
 
@@ -22,18 +30,29 @@ def cleanhtml(raw_html):
 
 
 def remove_von(value):
+    """Remove "Von " from text"""
     return value.replace("Von ", "")
 
 
 def remove_new_line(value):
+    """Remove new line from text"""
     return value.replace("\xad", "").replace("\n", "")
 
 
 def remove_multiple_spaces(value):
+    """Remove multiple spaces from text"""
     return re.sub(" +", " ", value)
 
 
 def split_mulitple_authors(value):
+    """Split multiple authors from a text into list
+
+    Args:
+        value: Text with multiple authors
+
+    Returns:
+        tmp: Dict with authors
+    """
     value = value.replace(" und ", ", ")
     value = value.replace("und ", ", ")
     value = value.replace("UND ", ", ")
@@ -50,6 +69,14 @@ def split_mulitple_authors(value):
 
 
 def remove_city(value):
+    """Remove city from text
+
+    Args:
+        value: Text with city
+
+    Returns:
+        text: Text without city
+    """
     match = re.search(r"^ [A-züäö\/A-züäö]*\. ", value)
     if match:
         city = value[match.start() : match.end()]
@@ -79,6 +106,14 @@ def remove_city(value):
 
 
 def prep_kn_content(raw_content_data: Dict[str, str]) -> Dict[str, str]:
+    """Prepare content data for kn content
+
+    Args:
+        raw_content_data:
+
+    Returns:
+
+    """
     prep_content_data = {}
 
     for key, value in raw_content_data["content"].items():

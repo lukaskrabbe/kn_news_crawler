@@ -8,13 +8,13 @@ from pytz import timezone
 
 
 def get_logger(function: str):
-    """
+    """Get Logger for function
 
     Args:
-        function:
+        function: Name of the function
 
     Returns:
-        logger: Logger
+        logger: Logger for function
     """
     log_dir = f"./data/logs/{datetime.today().strftime('%d_%m_%Y')}/"
     if not os.path.exists(log_dir):

@@ -10,11 +10,11 @@ logger = logging.getLogger("secrets")
 def get_secret_from_env(
     secret: str, path: Optional[str] = "./secrets/"
 ) -> Dict[str, str]:
-    """
+    """Get secret from environment variable
 
     Args:
-        path:
-        secret:
+        path: Path to secrets
+        secret: Name of the secret
 
     Returns:
         secret_value: None if Secret does not exists, dict if exists
