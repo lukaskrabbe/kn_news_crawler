@@ -65,7 +65,7 @@ executing==1.2.0
     # via stack-data
 fastjsonschema==2.16.3
     # via nbformat
-filelock==3.9.1
+filelock==3.11.0
     # via virtualenv
 fonttools==4.39.2
     # via matplotlib
