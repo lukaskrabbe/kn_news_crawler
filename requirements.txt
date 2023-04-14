@@ -371,7 +371,7 @@ tinycss2==1.2.1
     # via nbconvert
 tomli==2.0.1
     # via pytest
-tomlkit==0.11.0
+tomlkit==0.11.7
     # via pylint
 tornado==6.2
     # via
