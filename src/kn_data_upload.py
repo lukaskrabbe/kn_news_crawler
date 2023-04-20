@@ -1,7 +1,23 @@
 # -*- coding: utf-8 -*-
+"""
+KN-Data-Upload
+
+This script uploads the prepared KN-Data to a MongoDB.
+
+Usage:
+    kn_data_upload.py
+
+Example:
+    python kn_data_upload.py
+
+Author: Lukas Krabbe (mail@l-krabbe.de)
+
+Copyright (c) 2020 Lukas Krabbe
+"""
 import glob
 import json
 import os
+import sys
 
 import pymongo
 from helpers.log import get_logger
@@ -9,7 +25,19 @@ from helpers.secrets import get_secret_from_env
 
 logger = get_logger("kn-data-upload")
 
-if __name__ == "__main__":
+
+def main(param: list):
+    """
+    Main function for the KN-Data-Upload
+
+    Args:
+        param: List of arguments passed to the script
+
+    Returns:
+
+    """
+    logger.info("Start Upload of KN-Data")
+
     secret = get_secret_from_env("MONGO_USER_SECRET")
 
     client = pymongo.MongoClient(
@@ -38,3 +66,7 @@ if __name__ == "__main__":
                     exists += 1
 
         logger.info("Inserted %s Documents into DB", len(files) - exists)
+
+
+if __name__ == "__main__":
+    main(sys.argv)

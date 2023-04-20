@@ -1,14 +1,40 @@
 # -*- coding: utf-8 -*-
+"""
+KN-Data-Prep
+
+This script prepares the downloaded KN-Data for further processing.
+
+Usage:
+    kn_data_prep.py
+
+Example:
+    python kn_data_prep.py
+
+Author: Lukas Krabbe (mail@l-krabbe.de)
+
+Copyright (c) 2020 Lukas Krabbe
+"""
 import glob
 import json
 import os
+import sys
 
 from helpers.log import get_logger
 from kn.prep import prep_kn_content
 
 logger = get_logger("kn-data-prep")
 
-if __name__ == "__main__":
+
+def main(param: list):
+    """
+    Main function for the KN-Data-Prep
+
+    Args:
+        param: List of arguments passed to the script
+
+    Returns:
+
+    """
     logger.info("Start Preparation of KN-Data")
 
     data_dir = "./data/prep/"
@@ -42,3 +68,7 @@ if __name__ == "__main__":
                     json.dump(prep_content, fp, indent=1, ensure_ascii=False)
 
     logger.info("Successfully prepared KN-Data")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
