@@ -16,7 +16,7 @@ Example:
 Author: Lukas Krabbe (mail@l-krabbe.de)
 
 Copyright (c) 2020 Lukas Krabbe
-""" ""
+"""
 import argparse
 import sys
 from datetime import datetime
