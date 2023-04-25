@@ -12,7 +12,7 @@ Example:
 
 Author: Lukas Krabbe (mail@l-krabbe.de)
 
-Copyright (c) 2020 Lukas Krabbe
+Copyright (c) 2023 Lukas Krabbe
 """
 import glob
 import json

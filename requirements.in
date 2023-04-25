@@ -12,3 +12,5 @@ HanTa
 kneed
 scikit-learn
 hdbscan
+seaborn
+umap-learn
