@@ -14,3 +14,5 @@ scikit-learn
 hdbscan
 seaborn
 umap-learn
+bokeh
+dbt-postgres
