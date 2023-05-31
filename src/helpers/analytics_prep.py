@@ -126,7 +126,7 @@ def stop_words(words: Dict[str, Dict[str, Any]], csv_path: str) -> pd.DataFrame:
     logger.info(
         f"Vorkommen von Stop Words: "
         f"{df[df['stop_word'] is True]['count'].sum()}/{df['count'].sum()} "
-        f"({round(df[df['stop_word'] isg True]['count'].sum()/df['count'].sum(), 2)} %)"
+        f"({round(df[df['stop_word'] is True]['count'].sum()/df['count'].sum(), 2)} %)"
     )
 
     df.to_csv(csv_path, index=False)
