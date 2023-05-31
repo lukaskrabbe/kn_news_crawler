@@ -1,10 +1,12 @@
-import pymongo
-import psycopg2
-from helpers.secrets import get_secret_from_env
-
+# -*- coding: utf-8 -*-
 import logging
 
+import psycopg2
+import pymongo
+from helpers.secrets import get_secret_from_env
+
 logger = logging.getLogger("secrets")
+
 
 def get_posgtres_connection():
     """
@@ -25,6 +27,7 @@ def get_posgtres_connection():
     logger.info("Connected to Postgres DB")
 
     return conn
+
 
 def get_mongo_connection():
     """
