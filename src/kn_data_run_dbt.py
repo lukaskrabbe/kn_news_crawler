@@ -25,7 +25,7 @@ from dbt.cli.main import dbtRunner
 logger = get_logger("run_dbt")
 
 cwd = os.getcwd()
-os.chdir(os.path.join(cwd, os.pardir) + "/dbt")
+os.chdir(cwd + "/dbt")
 
 def main(param: list):
     """
