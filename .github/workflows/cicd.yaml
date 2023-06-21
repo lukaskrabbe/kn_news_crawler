@@ -48,3 +48,4 @@ jobs:
             touch ./secrets/KN_USER_SECRET.json
             echo ${{ secrets.KN_USER_SECRET }} > ./secrets/KN_USER_SECRET.json
             echo ${{ secrets.MONGO_USER_SECRET }} > ./secrets/MONGO_USER_SECRET.json
+            echo ${{ secrets.POSTGRESDB_USER_SECRET }} > ./secrets/POSTGRESDB_USER_SECRET.json
