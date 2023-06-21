@@ -116,7 +116,7 @@ def main(param: list):
                 body
             )
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-            ON DUPLICATE (kn_id) DO NOTHING
+            ON CONFLICT (kn_id) DO NOTHING
         """,
             (kn_id, title, subtitle, authors, releaseDate, city, resort, body),
         )
