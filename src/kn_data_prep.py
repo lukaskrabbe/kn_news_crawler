@@ -20,7 +20,6 @@ import os
 import sys
 
 from helpers.log import get_logger
-
 from kn.prep import prep_kn_content
 
 logger = get_logger("kn-data-prep")
