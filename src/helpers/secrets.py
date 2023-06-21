@@ -21,6 +21,9 @@ def get_secret_from_env(
     """
 
     try:
+        if path[-1] != "/":
+            path += "/"
+
         with open(f"{path}{secret}.json", "r") as sv:
             secret_value = json.loads(sv.read())
 
