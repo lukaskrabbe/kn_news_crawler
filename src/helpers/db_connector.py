@@ -15,7 +15,7 @@ def get_posgtres_connection():
     Returns:
         conn: Connection to the Postgres DB
     """
-    secret = get_secret_from_env("POSTGRESDB_USER_SECRET", path="../secrets/")
+    secret = get_secret_from_env("POSTGRESDB_USER_SECRET")
 
     conn = psycopg2.connect(
         host="81.169.252.177",
@@ -36,7 +36,7 @@ def get_mongo_connection():
     Returns:
 
     """
-    secret = get_secret_from_env("MONGO_USER_SECRET", path="../secrets/")
+    secret = get_secret_from_env("MONGO_USER_SECRET")
 
     mongo_client = pymongo.MongoClient(
         f"mongodb://{secret['user']}:{secret['password']}@81.169.252.177:27017/?authMechanism=DEFAULT&tls=false"
