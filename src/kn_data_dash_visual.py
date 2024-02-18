@@ -8,6 +8,8 @@ Author: Lukas Krabbe (mail@l-krabbe.de)
 
 Copyright (c) 2023 Lukas Krabbe
 """
+from datetime import date
+
 import dash_auth
 from dash import callback
 from dash import Dash
@@ -15,6 +17,9 @@ from dash import dcc
 from dash import html
 from dash import Input
 from dash import Output
+from dash import dash_table
+
+from helpers.db_connector import get_posgtres_connection
 
 # Keep this out of source code repository - save in a file or a database
 VALID_USERNAME_PASSWORD_PAIRS = {
@@ -30,19 +35,70 @@ auth = dash_auth.BasicAuth(
 )
 
 app.layout = html.Div([
-    html.H1('Welcome to the app'),
-    html.H3('You are successfully authorized'),
-    dcc.Dropdown(['A', 'B'], 'A', id='dropdown'),
-    dcc.Graph(id='graph')
+    html.H1('KN-Data Visualisation'),
+    #dcc.Dropdown(['A', 'B'], 'A', id='dropdown'),
+    dcc.DatePickerRange(
+        id='date-picker',
+        start_date='2024-01-01',
+        end_date=date.today().strftime("%Y-%m-%d"),
+        max_date_allowed=date.today().strftime("%Y-%m-%d"),
+    ),
+    dcc.Graph(id='graph'),
+    html.H6('Last 10 days, for the selected period'),
+    dash_table.DataTable(id='table'),
 ], className='container')
+
+def get_data(start_date, end_date):
+    conn = get_posgtres_connection()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        SELECT article_releasedate, 
+        CASE WHEN EXTRACT(DOW FROM article_releasedate) = 0 THEN 'Sunday'
+            WHEN EXTRACT(DOW FROM article_releasedate) = 1 THEN 'Monday'
+            WHEN EXTRACT(DOW FROM article_releasedate) = 2 THEN 'Tuesday'
+            WHEN EXTRACT(DOW FROM article_releasedate) = 3 THEN 'Wednesday'
+            WHEN EXTRACT(DOW FROM article_releasedate) = 4 THEN 'Thursday'
+            WHEN EXTRACT(DOW FROM article_releasedate) = 5 THEN 'Friday'
+            WHEN EXTRACT(DOW FROM article_releasedate) = 6 THEN 'Saturday'
+            ELSE 'Unknown' END AS day,
+        COUNT(*)
+        FROM kn.dbt.stg_articles
+        WHERE article_releasedate BETWEEN %s AND %s
+        GROUP BY 1, 2
+        ORDER BY 1 DESC
+        """, (start_date, end_date)
+    )
+    data = cur.fetchall()
+    cur.close()
+    conn.close()
+    return data
+
+@callback(
+    Output('table', 'data'),
+    [Input('date-picker', 'start_date'),
+     Input('date-picker', 'end_date')],)
+def update_table(start_date, end_date):
+    data = get_data(start_date, end_date)
+    # ALlow only last 10 days if more than 10 days are selected
+    if len(data) > 10:
+        data = data[:10]
+
+    return [{'Date': x[0], 'Day': x[1], 'Count': x[2]} for x in data]
+
 
 @callback(
     Output('graph', 'figure'),
-    Input('dropdown', 'value'))
-def update_graph(dropdown_value):
+    [Input('date-picker', 'start_date'),
+     Input('date-picker', 'end_date')],)
+def update_graph(start_date, end_date):
+    data = get_data(start_date, end_date)
+    x = [x[0] for x in data]
+    y = [x[2] for x in data]
+
     return {
         'layout': {
-            'title': 'Test Graph of {}'.format(dropdown_value),
+            'title': 'Number of articles per day, from ' + start_date + ' to ' + end_date,
             'margin': {
                 'l': 20,
                 'b': 20,
@@ -50,7 +106,13 @@ def update_graph(dropdown_value):
                 't': 60
             }
         },
-        'data': [{'x': [1, 2, 3], 'y': [4, 1, 2]}]
+        'data': [
+            {
+                'x': x,
+                'y': y,
+                'type': 'line'
+            }
+        ]
     }
 
 if __name__ == '__main__':
