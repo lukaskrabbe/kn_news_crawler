@@ -15,5 +15,5 @@ seaborn
 umap-learn
 bokeh
 dbt-postgres
-dash==2.15.0
+dash
 dash-auth

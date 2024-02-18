@@ -8,8 +8,13 @@ Author: Lukas Krabbe (mail@l-krabbe.de)
 
 Copyright (c) 2023 Lukas Krabbe
 """
-from dash import Dash, dcc, html, Input, Output, callback
 import dash_auth
+from dash import callback
+from dash import Dash
+from dash import dcc
+from dash import html
+from dash import Input
+from dash import Output
 
 # Keep this out of source code repository - save in a file or a database
 VALID_USERNAME_PASSWORD_PAIRS = {
