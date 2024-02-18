@@ -67,8 +67,6 @@ contourpy==1.0.7
     #   matplotlib
 cycler==0.11.0
     # via matplotlib
-cython==0.29.34
-    # via hdbscan
 dbt-core==1.5.1
     # via dbt-postgres
 dbt-extractor==0.4.1
@@ -100,8 +98,6 @@ fqdn==1.5.1
 future==0.18.3
     # via parsedatetime
 hanta==1.1.1
-    # via -r requirements.in
-hdbscan==0.8.29
     # via -r requirements.in
 hologram==0.0.16
     # via dbt-core
@@ -154,7 +150,6 @@ jinja2==3.1.2
     #   notebook
 joblib==1.2.0
     # via
-    #   hdbscan
     #   nltk
     #   pynndescent
     #   scikit-learn
@@ -281,7 +276,6 @@ numpy==1.22.4
     # via
     #   bokeh
     #   contourpy
-    #   hdbscan
     #   kneed
     #   matplotlib
     #   numba
@@ -429,12 +423,10 @@ rfc3986-validator==0.1.1
 scikit-learn==1.2.2
     # via
     #   -r requirements.in
-    #   hdbscan
     #   pynndescent
     #   umap-learn
 scipy==1.10.1
     # via
-    #   hdbscan
     #   kneed
     #   pynndescent
     #   scikit-learn
