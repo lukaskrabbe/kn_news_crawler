@@ -2,6 +2,8 @@
 """
 KN-Data-Prep
 
+Step 2: Prepare KN-Data
+
 This script prepares the downloaded KN-Data for further processing.
 
 Usage:

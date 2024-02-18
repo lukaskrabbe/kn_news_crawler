@@ -2,6 +2,8 @@
 """
 KN-Data-DB-Upload
 
+Step 4: Upload KN-Data to Postgres DB
+
 Loads Data from the MongoDB into Postgres DB kn.raw
 
 Usage:

@@ -2,7 +2,9 @@
 """
 KN-Data-DB-Upload
 
-Loads Data from the MongoDB into Postgres DB kn.raw
+Step 5: Run DBT
+
+Runs the dbt command to update the data to the Postgres DB
 
 Usage:
     kn_data_db_upload.py

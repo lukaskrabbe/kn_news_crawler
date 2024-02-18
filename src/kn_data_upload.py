@@ -2,6 +2,8 @@
 """
 KN-Data-Upload
 
+Step 3: Upload KN-Data to MongoDB
+
 This script uploads the prepared KN-Data to a MongoDB.
 
 Usage:

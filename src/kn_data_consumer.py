@@ -2,6 +2,8 @@
 """
 KN-Data-Consumer
 
+Step 1: Download KN-Data
+
 This script downloads the KN-Data for a given date and stores it in a
 local directory.
 
