@@ -52,6 +52,7 @@ charset-normalizer==3.1.0
 click==8.1.3
     # via
     #   dbt-core
+    #   flask
     #   nltk
 colorama==0.4.6
     # via
@@ -67,6 +68,18 @@ contourpy==1.0.7
     #   matplotlib
 cycler==0.11.0
     # via matplotlib
+dash==2.15.0
+    # via
+    #   -r requirements.in
+    #   dash-auth
+dash-auth==2.2.0
+    # via -r requirements.in
+dash-core-components==2.0.0
+    # via dash
+dash-html-components==2.0.0
+    # via dash
+dash-table==5.0.0
+    # via dash
 dbt-core==1.5.1
     # via dbt-postgres
 dbt-extractor==0.4.1
@@ -91,6 +104,10 @@ fastjsonschema==2.16.3
     # via nbformat
 filelock==3.11.0
     # via virtualenv
+flask==2.2.5
+    # via
+    #   dash
+    #   dash-auth
 fonttools==4.39.2
     # via matplotlib
 fqdn==1.5.1
@@ -109,6 +126,8 @@ idna==3.4
     #   dbt-core
     #   jsonschema
     #   requests
+importlib-metadata==7.0.1
+    # via dash
 iniconfig==2.0.0
     # via pytest
 ipykernel==6.22.0
@@ -138,12 +157,15 @@ isoduration==20.11.0
     # via jsonschema
 isort==5.10.1
     # via pylint
+itsdangerous==2.1.2
+    # via flask
 jedi==0.18.2
     # via ipython
 jinja2==3.1.2
     # via
     #   bokeh
     #   dbt-core
+    #   flask
     #   jupyter-server
     #   nbclassic
     #   nbconvert
@@ -255,6 +277,7 @@ nbformat==5.8.0
     #   notebook
 nest-asyncio==1.5.6
     # via
+    #   dash
     #   ipykernel
     #   nbclassic
     #   notebook
@@ -292,6 +315,7 @@ packaging==21.3
     #   jupyter-server
     #   matplotlib
     #   nbconvert
+    #   plotly
     #   pytest
     #   qtconsole
     #   qtpy
@@ -321,6 +345,8 @@ platformdirs==2.5.2
     #   jupyter-core
     #   pylint
     #   virtualenv
+plotly==5.19.0
+    # via dash
 pluggy==1.0.0
     # via pytest
 pre-commit==3.1.1
@@ -410,8 +436,11 @@ regex==2022.10.31
 requests==2.28.2
     # via
     #   -r requirements.in
+    #   dash
     #   dbt-core
     #   minimal-snowplow-tracker
+retrying==1.3.4
+    # via dash
 rfc3339-validator==0.1.4
     # via
     #   jsonschema
@@ -446,6 +475,7 @@ six==1.16.0
     #   leather
     #   minimal-snowplow-tracker
     #   python-dateutil
+    #   retrying
     #   rfc3339-validator
 sniffio==1.3.0
     # via anyio
@@ -455,6 +485,8 @@ sqlparse==0.4.3
     # via dbt-core
 stack-data==0.6.2
     # via ipython
+tenacity==8.2.3
+    # via plotly
 terminado==0.17.1
     # via
     #   jupyter-server
@@ -506,6 +538,7 @@ traitlets==5.9.0
     #   qtconsole
 typing-extensions==4.6.2
     # via
+    #   dash
     #   dbt-core
     #   mashumaro
 umap-learn==0.5.3
@@ -526,14 +559,20 @@ webencodings==0.5.1
     #   tinycss2
 websocket-client==1.5.1
     # via jupyter-server
-werkzeug==2.3.4
-    # via dbt-core
+werkzeug==2.2.3
+    # via
+    #   dash
+    #   dash-auth
+    #   dbt-core
+    #   flask
 widgetsnbextension==4.0.6
     # via ipywidgets
 wrapt==1.14.1
     # via astroid
 xyzservices==2023.2.0
     # via bokeh
+zipp==3.17.0
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
