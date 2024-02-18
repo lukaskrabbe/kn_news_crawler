@@ -8,12 +8,12 @@ This script downloads the KN-Data for a given date and stores it in a
 local directory.
 
 Usage:
-    kn_data_consumer.py [-d <date>]
+    01_kn_data_consumer.py [-d <date>]
 
     -d, --date <date>   Date to download KN-Data for (default: today)
 
 Example:
-    python kn_data_consumer.py -d 01.01.2020
+    python 01_kn_data_consumer.py -d 01.01.2020
 
 Author: Lukas Krabbe (mail@l-krabbe.de)
 
