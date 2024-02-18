@@ -42,7 +42,7 @@ app.layout = html.Div([
 def update_graph(dropdown_value):
     return {
         'layout': {
-            'title': 'Graph of {}'.format(dropdown_value),
+            'title': 'Test Graph of {}'.format(dropdown_value),
             'margin': {
                 'l': 20,
                 'b': 20,
