@@ -34,6 +34,8 @@ auth = dash_auth.BasicAuth(
 )
 
 def get_layout():
+    app.logger.info('Start-Date: %s', date.today().strftime("%Y-%m-%d"))
+    app.logger.info('End-Date: %s', date.today().strftime("%Y-%m-%d"))
     return html.Div([
         html.H1('KN-Data Visualisation'),
         # dcc.Dropdown(['A', 'B'], 'A', id='dropdown'),
