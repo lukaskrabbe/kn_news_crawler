@@ -49,3 +49,6 @@ jobs:
             echo ${{ secrets.KN_USER_SECRET }} > ./secrets/KN_USER_SECRET.json
             echo ${{ secrets.MONGO_USER_SECRET }} > ./secrets/MONGO_USER_SECRET.json
             echo ${{ secrets.POSTGRESDB_USER_SECRET }} > ./secrets/POSTGRESDB_USER_SECRET.json
+            docker stop $(docker ps -aq)
+            docker rm $(docker ps -aq)
+            docker run -d --publish 9000:9000 --mount type=bind,source=/home/lukaskrabbe/data/,target=/usr/src/app/data/ --mount type=bind,source=/home/lukaskrabbe/secrets/,target=/usr/src/app/secrets/ registry-1.docker.io/lukaskrabbe2/kn:latest

@@ -13,12 +13,11 @@ from datetime import date
 import dash_auth
 from dash import callback
 from dash import Dash
+from dash import dash_table
 from dash import dcc
 from dash import html
 from dash import Input
 from dash import Output
-from dash import dash_table
-
 from helpers.db_connector import get_posgtres_connection
 
 # Keep this out of source code repository - save in a file or a database
@@ -34,26 +33,29 @@ auth = dash_auth.BasicAuth(
     VALID_USERNAME_PASSWORD_PAIRS
 )
 
-app.layout = html.Div([
-    html.H1('KN-Data Visualisation'),
-    #dcc.Dropdown(['A', 'B'], 'A', id='dropdown'),
-    dcc.DatePickerRange(
-        id='date-picker',
-        start_date='2024-01-01',
-        end_date=date.today().strftime("%Y-%m-%d"),
-        max_date_allowed=date.today().strftime("%Y-%m-%d"),
-    ),
-    dcc.Graph(id='graph'),
-    html.H6('Last 10 days, for the selected period'),
-    dash_table.DataTable(id='table'),
-], className='container')
+def get_layout():
+    return html.Div([
+        html.H1('KN-Data Visualisation'),
+        # dcc.Dropdown(['A', 'B'], 'A', id='dropdown'),
+        dcc.DatePickerRange(
+            id='date-picker',
+            start_date='2024-01-01',
+            end_date=date.today().strftime("%Y-%m-%d"),
+            max_date_allowed=date.today().strftime("%Y-%m-%d"),
+        ),
+        dcc.Graph(id='graph'),
+        html.H6('Last 10 days, for the selected period'),
+        dash_table.DataTable(id='table'),
+    ], className='container')
+
+app.layout = get_layout()
 
 def get_data(start_date, end_date):
     conn = get_posgtres_connection()
     cur = conn.cursor()
     cur.execute(
         """
-        SELECT article_releasedate, 
+        SELECT article_releasedate,
         CASE WHEN EXTRACT(DOW FROM article_releasedate) = 0 THEN 'Sunday'
             WHEN EXTRACT(DOW FROM article_releasedate) = 1 THEN 'Monday'
             WHEN EXTRACT(DOW FROM article_releasedate) = 2 THEN 'Tuesday'
@@ -98,7 +100,8 @@ def update_graph(start_date, end_date):
 
     return {
         'layout': {
-            'title': 'Number of articles per day, from ' + start_date + ' to ' + end_date,
+            'title': 'Number of articles per day, from ' +
+                     start_date + ' to ' + end_date,
             'margin': {
                 'l': 20,
                 'b': 20,
